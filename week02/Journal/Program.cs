@@ -28,7 +28,7 @@ class Program
                 string answer = Console.ReadLine();
                 journal.AddEntry(new Entry(prompt, answer));
             }
-            
+
             else if (number == 2)
             {
                 journal.DisplayAll();
@@ -36,20 +36,24 @@ class Program
             else if (number == 3)
             {
                 Console.WriteLine("What is the filename?");
-                string filename = Console.ReadLine();
-                journal.LoadFromFile();
+                string file = Console.ReadLine();
+                journal.LoadFromFile(file);
             }
             else if (number == 4)
             {
                 Console.WriteLine("What is the filename?");
-                string filename = Console.ReadLine();
-                journal.SaveToFile();
+                string file = Console.ReadLine();
+                journal.SaveToFile(file);
             }
-            else
+            else if (number == 5)
             {
                 Console.WriteLine("Goodbye");
                 running = false;
                 break;
+            }
+            else
+            {
+                Console.WriteLine("Please insert a valid entry");
             }
         }
     }

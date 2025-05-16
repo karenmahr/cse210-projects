@@ -14,27 +14,35 @@ public class Journal
             newEntry.Display();
         }
     }
-    public void LoadFromFile()
+    public void LoadFromFile(string file)
     {
-        string filename = "myFile.txt";
-        string[] lines = System.IO.File.ReadAllLines(filename);
-        
+        string[] lines = System.IO.File.ReadAllLines(file);
+
         foreach (string line in lines)
         {
-            string[] parts = line.Split(",");
+            string[] parts = line.Split("~|~");
 
-            string firstName = parts[0];
-            string lastName = parts[1];
+            if (parts.Length >= 2)
+            {
+                string firstName = parts[0];
+                string lastName = parts[1];
+            }
+            else
+            {
+                {
+                    Console.WriteLine($"Skipped invalid line: \"{line}\"");
+                }
+            }
         }
     }
-    //Reading Text Files in C# - load   
-    public void SaveToFile()
+    public void SaveToFile(string file)
     {
-        string filename = "myFile.txt";
-        using (StreamWriter outputFile = new StreamWriter(filename))
+        using (StreamWriter outputFile = new StreamWriter(file))
         {
-
+            foreach (Entry entry in _entries)
+            {
+                outputFile.WriteLine(entry);
+            }
         }
     }
-
 }
