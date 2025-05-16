@@ -4,11 +4,11 @@ public class PromptGenerator
 {  
     public List <string> _prompts = new List<string>()
     {
-        "Who was the most interesting person I interacted with today?",
-        "What was the best part of my day?",
-        "How did I see the hand of the Lord in my life today?",
-        "What was the strongest emotion I felt today?",
-        "If I had one thing I could do over today, what would it be?"
+        "From one to ten, how did your day looked like?",
+        "What was the strongest emotion you felt today",
+        "How did you felt the Spirit today?",
+        "What is something you want to do better tomorrow?",
+        "What is something you are grateful for today?"
     };    
       Random _random = new Random();  
       public string GetRandomPrompt()
