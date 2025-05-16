@@ -4,8 +4,6 @@ public class Entry
     public string _date;
     public string _promptText;
     public string _entryText;
-
-
     public Entry(string prompt, string text)
     {
         _date = DateTime.Now.ToShortDateString();

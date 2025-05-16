@@ -53,7 +53,7 @@ class Program
             }
             else
             {
-                Console.WriteLine("Please insert a valid entry");
+                Console.WriteLine("Please insert a valid option");
             }
         }
     }
