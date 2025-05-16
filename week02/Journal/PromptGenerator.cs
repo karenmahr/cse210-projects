@@ -1,14 +1,7 @@
 using System;
-using System.Dynamic;
 
 public class PromptGenerator
 {  
-    Random random = new Random();  
-      string GetRandomPrompt()
-    {
-        int randomIndex = random.Next(_prompts.Count);
-        return _prompts[randomIndex];      
-    }
     public List <string> _prompts = new List<string>()
     {
         "Who was the most interesting person I interacted with today?",
@@ -16,5 +9,12 @@ public class PromptGenerator
         "How did I see the hand of the Lord in my life today?",
         "What was the strongest emotion I felt today?",
         "If I had one thing I could do over today, what would it be?"
-    };
+    };    
+      Random _random = new Random();  
+      public string GetRandomPrompt()
+    {
+        int randomIndex = _random.Next(_prompts.Count);
+        return _prompts[randomIndex];      
+    }
+
 }

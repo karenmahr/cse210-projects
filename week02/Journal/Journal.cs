@@ -1,20 +1,20 @@
 using System;
-using System.IO; 
+using System.IO;
 public class Journal
 {
-    public List<Entry> _entries = new List<Entry>();
+    public List<Entry> _entries = new List<Entry>(); 
     public void AddEntry(Entry newEntry)
     {
-        _entries.Add(newEntry);        
+        _entries.Add(newEntry);
     }
     public void DisplayAll()
     {
         foreach (Entry newEntry in _entries)
         {
-            Console.WriteLine(_entries);
+            newEntry.Display();
         }
     }
-    public void SaveToFile()
+    public void LoadFromFile()
     {
         string filename = "myFile.txt";
         string[] lines = System.IO.File.ReadAllLines(filename);
@@ -27,11 +27,14 @@ public class Journal
             string lastName = parts[1];
         }
     }
- //Writing Text Files in C# - load   
-    public void LoadFromFile()
+    //Reading Text Files in C# - load   
+    public void SaveToFile()
     {
-        string fileName = "myFile.txt";
+        string filename = "myFile.txt";
         using (StreamWriter outputFile = new StreamWriter(filename))
+        {
+
+        }
     }
 
 }
