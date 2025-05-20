@@ -7,6 +7,7 @@ public class Scripture
     public Scripture(Reference Reference, string text)
     {
         _reference = Reference;
+        _words = text;
 
     }
     private void HideRandomWords(int numberToHide)
@@ -17,10 +18,20 @@ public class Scripture
 
     private string GetDisplayText()
     {
-        
+        foreach (Word Word in _words)
+        {
+        if (Word = Show())
+        {
+            return _text;
+        }  
+        else
+        {
+            return "_____";
+        }
+        }
     }
     private bool IsCompletelyHidden()
     {
-
+       
     }
 }
