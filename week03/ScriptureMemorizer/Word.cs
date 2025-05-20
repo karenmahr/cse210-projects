@@ -11,18 +11,26 @@ public class Word
 
     private void Hide()
     {
-        Console.WriteLine(_isHidden);
+        _isHidden = true;
     }
     private void Show()
     {
-        Console.WriteLine(_text);
+        _isHidden = false;
     }
     private bool IsHidden()
     {
-        return ;
+        return _isHidden;
     }
     private string GetDisplayText()
     {
-        return _text;
+        if (_isHidden == false)
+        {
+            return _text;
+        }
+        else
+        {
+            return "_____";
+        }
+            
     }
 }
