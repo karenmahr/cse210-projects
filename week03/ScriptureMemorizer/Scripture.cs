@@ -7,12 +7,20 @@ public class Scripture
     public Scripture(Reference Reference, string text)
     {
         _reference = Reference;
-        _words = text;
+        _words = new List<Word>();
+
+        string[] wordSplit = text.Split(' ');
+        
+        foreach(string word in wordSplit)
+        {
+            Word newWord = new Word(word);
+            _words.Add(newWord);
+        }
 
     }
     private void HideRandomWords(int numberToHide)
     {
-        Random randomGenerator = new Random();
+       Random randomGenerator = new Random();
         int numberToHide = randomGenerator.Next(1, 3);
     }
 
@@ -32,6 +40,6 @@ public class Scripture
     }
     private bool IsCompletelyHidden()
     {
-       
+     
     }
 }
