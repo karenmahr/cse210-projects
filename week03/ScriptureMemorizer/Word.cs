@@ -7,9 +7,9 @@ public class Word
     public Word(string text)
     {
         _text = text;
-    }
 
-    private void Hide()
+    }
+    public void Hide()
     {
         _isHidden = true;
     }
@@ -17,11 +17,11 @@ public class Word
     {
         _isHidden = false;
     }
-    private bool IsHidden()
+    public bool IsHidden()
     {
         return _isHidden;
     }
-    private string GetDisplayText()
+    public string GetDisplayText()
     {
         if (_isHidden == false)
         {
@@ -29,8 +29,14 @@ public class Word
         }
         else
         {
-            return "_____";
+            string underscore = "";
+
+            for (int i = 0; i < _text.Length; i++)
+            {
+                underscore += "_";
+            }
+            return underscore;
         }
-            
     }
 }
+
