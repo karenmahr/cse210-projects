@@ -17,8 +17,7 @@ public class Video
     } 
     public int NumberOfComments()
     {
-        int comments = _comment.Count;
-        return comments;
+        return _comment.Count;
     }
 }
 
