@@ -36,7 +36,7 @@ public class Address
 
     private string CompleteAddress()
     {
-        return $"{_streetAddress}, {_city} {_state} {_country}";
+        return $"{_streetAddress}, {_city}, {_state}, {_country}";
     }
 
     public string GetCompleteAddress()

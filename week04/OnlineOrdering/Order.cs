@@ -5,10 +5,10 @@ public class Order
     private List<Product> _products;
     private Customer _customer;
 
-    public Order(Customer customer)
+    public Order(Customer customer, List<Product> products)
     {
         _customer = customer;
-        _products = new List<Product>();
+        _products = products;
     }
 
     private int TotalCostOrder()
@@ -22,20 +22,32 @@ public class Order
         return totalCost + _customer.GetShippingCost();
     }
 
-    private string PackingLabel(Product product)
+    public int GetTotalCostOrder()
     {
-        _products.Add(product);
-        string label = "PackingLabel";
-        foreach (var element in _products)
+        return TotalCostOrder();
+    }
+
+    private string PackingLabel()
+    {
+        string label = "Packing Label\n";
+        foreach (var product in _products)
         {
-            label += $"{product.GetName()} {product.GetProductId()}";
+            label += $"{product.GetName()} - {product.GetProductId()}\n";
         }
         return label;
-
+    }
+    public string GetPackingLabel()
+    {
+        return PackingLabel();
     }
 
     private string ShippingLabel()
     {
-        return $"{_customer.GetName()} {_customer.GetAddress()}";
+        return $"Shipping Label: {_customer.GetName()} - {_customer.GetAddress().GetCompleteAddress()}";
+    }
+
+    public string GetShippingLabel()
+    {
+        return ShippingLabel();
     }
 }
