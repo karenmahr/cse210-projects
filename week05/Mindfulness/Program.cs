@@ -4,6 +4,6 @@ class Program
 {
     static void Main(string[] args)
     {
-        Console.WriteLine("Hello World! This is the Mindfulness Project.");
+        Assignment a1 = new Assignment("Karen Mahr","Programmig with classes");
     }
 }
