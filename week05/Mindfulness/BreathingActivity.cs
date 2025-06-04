@@ -10,6 +10,24 @@ class BreathingActivity : Activity
 
     public void Run()
     {
-        
+        DisplayStartingMessage();
+
+        Console.WriteLine($"Get ready...");
+        ShowSpinner(3);
+
+        DateTime endTime = DateTime.Now.AddSeconds(GetDuration());
+
+        while (DateTime.Now < endTime)
+        {
+            Console.WriteLine("Breathe in...");
+            ShowCountDown(3);
+            Console.WriteLine("Breathe out...");
+            ShowCountDown(3);
+            Console.WriteLine();
+        }  
+
+        Console.WriteLine("Well done!!");
+        ShowSpinner(3);                             
+        DisplayEndingMessage();  
     }
 }

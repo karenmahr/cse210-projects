@@ -4,7 +4,7 @@ class Program
 {
     static void Main(string[] args)
     {
-        Activity a1 = new Activity("Breathing Activity", "This activity will help you relax by walking your through breathing in and out slowly. Clear your mind and focus on your breathing", 30);
+        BreathingActivity b1 = new BreathingActivity("Breathing Activity", "This activity will help you relax by walking your through breathing in and out slowly. Clear your mind and focus on your breathing", 30);
         ReflectingActivity r1 = new ReflectingActivity("Reflection Activity", "This activity will help you reflect on times in your life when you have shown strength and resilience. This will help you recognize the power you have and how you can use it in other aspects of your life.", 40);
         ListingActivity l1 = new ListingActivity("Listing Activity", "This activity will help you reflect on the good things in your life by having you list as many things as you can in a certain area.", 50, 0);
 
@@ -22,27 +22,23 @@ class Program
 
             if (option == 1)
             {
-                a1.DisplayStartingMessage();
-                Console.WriteLine("Breathe in");
-                Console.WriteLine("Breathe out");                
-                a1.DisplayEndingMessage();
+                b1.Run();
             }
             else if (option == 2)
             {
-                r1.DisplayStartingMessage();
-
-                string prompt = r1.GetRandomPrompt();
-                Console.WriteLine(prompt);
-
-                string question = r1.GetRandomQuestions();
-                Console.WriteLine(question);
-
-                r1.DisplayEndingMessage();
+                r1.Run();
             }
             else if (option == 3)
             {
                 l1.DisplayStartingMessage();
+
+                Console.WriteLine($"Get ready...");
+                l1.ShowSpinner(3);
+
                 l1.GetRandomPrompt();
+
+                Console.WriteLine("Well done!!");
+                l1.ShowSpinner(3);
                 l1.DisplayEndingMessage();
             }
             else if (option == 4)

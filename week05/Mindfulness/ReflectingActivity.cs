@@ -12,7 +12,23 @@ class ReflectingActivity : Activity
     }
     public void Run()
     {
+        DisplayStartingMessage();
 
+        Console.WriteLine($"Get ready...");
+        ShowSpinner(3);
+
+        DateTime endTime = DateTime.Now.AddSeconds(GetDuration());
+
+        while (DateTime.Now < endTime)
+        {
+            DisplayPrompt();
+            DisplayQuestions();
+        }    
+
+        Console.WriteLine("Well done!!");
+        ShowSpinner(3);
+        DisplayEndingMessage();
+        
     }
     public string GetRandomPrompt()
     {
@@ -47,12 +63,31 @@ class ReflectingActivity : Activity
 
         return questions[index];
     }
+    public List<string> GetQuestions()
+    {
+        return _questions;
+    }
     public void DisplayPrompt()
     {
-        Console.WriteLine(_prompts);
+        Console.WriteLine("Consider the following propmt:");
+        Console.WriteLine();
+
+        string prompt = GetRandomPrompt();
+        Console.WriteLine(prompt);
+        Console.WriteLine();
+
+        Console.WriteLine("When you have something in mind, press enter to continue. ");
+        string input = Console.ReadLine();
+        Console.Clear();
     }
     public void DisplayQuestions()
     {
-        Console.WriteLine(_questions);
+        Console.WriteLine("Now ponder on each of the following questions as they are related to this experience.");
+        Console.WriteLine("You may begin in: ");
+        ShowCountDown(3);
+
+        string question = GetRandomQuestions();
+        Console.WriteLine(question);
+        string answer = Console.ReadLine();
     }
 }
