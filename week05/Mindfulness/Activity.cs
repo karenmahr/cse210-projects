@@ -14,7 +14,7 @@ class Activity
     }
     public void DisplayStartingMessage()
     {
-        Console.WriteLine($"Welcome to the {_name} \n {_description} \n How long, in seconds, would you like for your session?");
+        Console.Write($"Welcome to the {_name} \n\n{_description} \n\nHow long, in seconds, would you like for your session?");
         string userInput = Console.ReadLine();
         _duration = int.Parse(userInput);        
     }
@@ -25,7 +25,9 @@ class Activity
     }
     public void DisplayEndingMessage()
     {
+        Console.WriteLine();
         Console.WriteLine($"You have completed another {_duration} seconds of the {_name}");
+        Console.WriteLine();
     }
 
     //NOT QUITE THERE, BUT VERY CLOSE
@@ -50,7 +52,7 @@ class Activity
     {
         for (int i = seconds; i > 0; i--)
         {
-            Console.WriteLine(i);
+            Console.Write(i);
             Thread.Sleep(1000);
             Console.Write("\b \b");
         }

@@ -1,7 +1,8 @@
+//I exceeded the requirements in the method GetRandomPrompt() in the ListingActivity class.
+//I used the Fisher-Yates shuffle to display the prompts without being repeated.
 using System;
-
-class Program
-{
+    class Program
+    {
     static void Main(string[] args)
     {
         BreathingActivity b1 = new BreathingActivity("Breathing Activity", "This activity will help you relax by walking your through breathing in and out slowly. Clear your mind and focus on your breathing", 30);
@@ -19,6 +20,7 @@ class Program
             Console.Write("Select a choice from the menu:");
             string userInput = Console.ReadLine();
             int option = int.Parse(userInput);
+            Console.WriteLine();
 
             if (option == 1)
             {
