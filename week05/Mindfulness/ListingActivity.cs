@@ -12,7 +12,22 @@ class ListingActivity : Activity
     }
     public void Run()
     {
+        DisplayStartingMessage();
 
+        Console.WriteLine($"Get ready...");
+        ShowSpinner(3);
+
+        Console.WriteLine($"List as many responses as you can to the following prompt: ");
+        GetRandomPrompt();
+        Console.WriteLine("You may begin in: ");
+        ShowCountDown(3);
+
+        List<string> userEntries = GetListFromUser();
+        
+        Console.WriteLine($"You listed {userEntries.Count} items!");
+        Console.WriteLine("Well done!!");
+        ShowSpinner(3);
+        DisplayEndingMessage();
     }
     public void GetRandomPrompt()
     {
@@ -25,6 +40,21 @@ class ListingActivity : Activity
 
         Random randomGenerator = new Random();
         int index = randomGenerator.Next(0, prompts.Length);
+
+        Console.WriteLine(prompts[index]);
+        string answer = Console.ReadLine();
     }
-    //GetListFromUser(): List <string>
+    public List<string> GetListFromUser()
+    {
+        List<string> entries = new List<string>();
+        DateTime endTime = DateTime.Now.AddSeconds(GetDuration());
+
+        while (DateTime.Now < endTime)
+        {
+            Console.Write(">");
+            string input = Console.ReadLine();
+            entries.Add(input);
+        }
+        return entries;
+    }   
 }

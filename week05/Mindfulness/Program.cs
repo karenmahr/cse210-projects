@@ -30,16 +30,7 @@ class Program
             }
             else if (option == 3)
             {
-                l1.DisplayStartingMessage();
-
-                Console.WriteLine($"Get ready...");
-                l1.ShowSpinner(3);
-
-                l1.GetRandomPrompt();
-
-                Console.WriteLine("Well done!!");
-                l1.ShowSpinner(3);
-                l1.DisplayEndingMessage();
+                l1.Run();
             }
             else if (option == 4)
             {

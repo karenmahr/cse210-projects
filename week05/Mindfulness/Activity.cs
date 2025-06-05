@@ -16,43 +16,43 @@ class Activity
     {
         Console.WriteLine($"Welcome to the {_name} \n {_description} \n How long, in seconds, would you like for your session?");
         string userInput = Console.ReadLine();
-        int seconds = int.Parse(userInput);        
+        _duration = int.Parse(userInput);        
+    }
+
+    public int GetDuration()
+    {
+        return _duration;
     }
     public void DisplayEndingMessage()
     {
-        Console.WriteLine($"Well done!!\n You have completed another {_duration} seconds of the {_name}");
+        Console.WriteLine($"You have completed another {_duration} seconds of the {_name}");
     }
-    
+
     //NOT QUITE THERE, BUT VERY CLOSE
     public void ShowSpinner(int seconds)
     {
-        List<string> animationStrings = new List<string>();
-        foreach (string animation in animationStrings)
+        List<string> animationStrings = new List<string> { "|", "/", "-", "\\", "|", "/", "-", "\\" };
+
+        DateTime endTime = DateTime.Now.AddSeconds(seconds);
+        int i = 0;
+
+        while (DateTime.Now < endTime)
         {
-            animationStrings.Add("|");
-            animationStrings.Add("/");
-            animationStrings.Add("-");
-            animationStrings.Add("\\");
-            animationStrings.Add("|");
-            animationStrings.Add("/");
-            animationStrings.Add("-");
-            animationStrings.Add("\\");
-
-            Console.WriteLine($"Get ready... \n {animation}");
+            string symbol = animationStrings[i % animationStrings.Count];
+            Console.Write(symbol);
+            Thread.Sleep(250);
+            Console.Write("\b \b");
+            i++;
         }
-
     }
+
     public void ShowCountDown(int seconds)
     {
-        DateTime startTime = DateTime.Now;
-        DateTime futureTime = startTime.AddSeconds(seconds);
-
-        Thread.Sleep(seconds);
-
-        DateTime currentTime = DateTime.Now;
-        if (currentTime < futureTime)
+        for (int i = seconds; i > 0; i--)
         {
-            Console.WriteLine("We have not arrived at our future time yet...");
+            Console.WriteLine(i);
+            Thread.Sleep(1000);
+            Console.Write("\b \b");
         }
     }
-}
+}    
