@@ -9,18 +9,26 @@ public class SimpleGoal : Goal
     {
         _isComplete = isComplete;
     }
-    public override void RecordEvent()
+  public override void RecordEvent()
+  {
+    if (!_isComplete)
     {
-
+      _isComplete = true;
+      Console.WriteLine($"Congratulations! You earned {GetPoints()} points.");
     }
-
-    public override bool IsComplete()
+    else
     {
-
+      Console.WriteLine("This goal is already completed.");
     }
+  }
 
-    public override string GetStringRepresentation()
-    {
-
-    }
+  public override bool IsComplete()
+  {
+    return _isComplete;
+  }
+  public override string GetStringRepresentation()
+  {
+    string checkbox = _isComplete ? "[X]" : "[ ]";
+    return $"{checkbox} {GetShortName()} ([_description])";
+  }
 }
