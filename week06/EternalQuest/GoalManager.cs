@@ -32,16 +32,16 @@ public class GoalManager
 
     public void ListGoalNames()
     {
-        foreach (var element in _goals)
+        for (int i = 0; i < _goals.Count; i++)
         {
-            Console.WriteLine(name);
+            Console.WriteLine($"{i + 1}. {_goals[i].GetStringRepresentation()}");
         }
     }
     public void ListGoalDetails()
     {
-        foreach (var element in _goals)
+        for (int i = 0; i < _goals.Count; i++)
         {
-            Console.WriteLine(description);
+            Console.WriteLine($"{i + 1}. {_goals[i].GetDetailString()}");
         }
     }
     public void CreateGoal(Goal newGoal)

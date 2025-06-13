@@ -43,7 +43,7 @@ public class CheckListGoal : Goal
   public override string GetDetailsString()
   {
     return $"ChecklistGoal / {GetShortName()} / {GetDescription()} / {GetPoints()} / {_target} / {_bonus} / {_amountCompleted}";
-    }
+  }
 
   public override string GetStringRepresentation()
   {
