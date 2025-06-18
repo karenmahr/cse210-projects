@@ -2,26 +2,26 @@ using System;
 
 public class Cycling: Activity
 {
-    private int _speed;
-    private int _pace;
-    public Cycling(DateTime  date, string name, int time, int length, int distance)
-       : base(date, name, time, length, distance)
+    private double _speed;
+    private double _pace;
+    public Cycling(DateTime date, string name, int time, int length, double distance, double pace, double speed)
+       : base(date, name, length, distance, time)
     {
-
-
+        _pace = pace;
+        _speed = speed;
     }
-    public override int Distance()
+    public override double Distance()
     {
         return (_speed * GetTime()) / 60;
     }
 
-    public override int Speed()
+    public override double Speed()
     {
         return _speed;
 
     }
 
-    public override int Pace()
+    public override double Pace()
     {
         return 60 / _pace;
     }

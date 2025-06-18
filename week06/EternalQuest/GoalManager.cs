@@ -69,12 +69,12 @@ public class GoalManager
         Goal newGoal = null;
         if (secondOption == 1)
         {
-            newGoal = new SimpleGoal(name, description, points);
+            newGoal = new SimpleGoal(name, description, GetPoints());
         }
 
         else if (secondOption == 2)
         {
-            newGoal = new EternalGoal(name, description, points);
+            newGoal = new EternalGoal(name, description, GetPoints());
         }
 
         else if (secondOption == 3)
@@ -89,7 +89,7 @@ public class GoalManager
             int bonus = int.Parse(fifthuserInput);
             Console.WriteLine();
 
-            newGoal = new CheckListGoal(name, description, points, times, bonus);
+            newGoal = new CheckListGoal(name, description, GetPoints(), times, bonus);
         }
         if (newGoal != null)
         {

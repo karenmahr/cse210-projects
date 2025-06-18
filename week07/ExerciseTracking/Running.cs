@@ -2,23 +2,23 @@ using System;
 
 public class Running : Activity
 {
-    public Running(DateTime date, string name, int length, int distance, int time)
+    public Running(DateTime date, string name, int length, double distance, double time)
        : base(date, name, length, distance, time)
     {
 
     }
 
-    public override int Distance()
+    public override double Distance()
     {
         return GetDistance();
     }
 
-    public override int Speed()
+    public override double Speed()
     {
         return (GetDistance() / GetTime()) * 60;
     }
 
-    public override int Pace()
+    public override double Pace()
     {
         return GetTime() / GetDistance();
     }

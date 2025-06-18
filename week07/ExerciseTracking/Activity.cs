@@ -5,10 +5,10 @@ public abstract class Activity
     private DateTime _date;
     private string _name;
     private int _length;
-    private int _distance;
-    private int _time;
+    private double _distance;
+    private double _time;
 
-    public Activity(DateTime date, string name, int length, int distance, int time)
+    public Activity(DateTime date, string name, int length, double distance, double time)
     {
         _date = date;
         _name = name;
@@ -16,29 +16,24 @@ public abstract class Activity
         _distance = distance;
         _time = time;
     }
-
-    public int GetDistance()
+    public double GetDistance()
     {
         return _distance;
     }
-    public int GetTime()
+    public double GetTime()
     {
         return _time;
     }
-
     protected DateTime GetDate()
     {
         return _date;
     }
-
-
-    public abstract int Distance();
-    public abstract int Speed();
-    public abstract int Pace();
-
+    public abstract double Distance();
+    public abstract double Speed();
+    public abstract double Pace();
     public string GetSummary()
     {
-        return $"{_date.ToString("dd MMM yyyy")} {_name} ({_time} min) - Distance: {_distance} km, Speed: {Speed()} kph, Pace: {Pace()} min per km";
+        return $"{_date.ToString("dd MMM yyyy")} {_name} ({_time} min) - Distance: {Distance()} km, Speed: {Speed()} kph, Pace: {Pace()} min per km";
     }
             
 }

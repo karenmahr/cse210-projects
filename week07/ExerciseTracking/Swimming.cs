@@ -3,24 +3,24 @@ using System;
 public class Swimming : Activity
 {
     private int _laps;
-    public Swimming(int laps, DateTime date, string name, int length, int distance, int time)
+    public Swimming(int laps, DateTime date, string name, int length, double distance, int time)
        : base(date, name, length, distance, time)
     {
         _laps = laps;
 
     }
 
-    public override int Distance()
+    public override double Distance()
     {
         return (_laps * 50) / 1000;
     }
 
-    public override int Speed()
+    public override double Speed()
     {
         return (GetDistance() / GetTime()) * 60;
     }
 
-    public override int Pace()
+    public override double Pace()
     {
         return GetTime() / GetDistance();
     }
