@@ -4,7 +4,7 @@ public class SimpleGoal : Goal
 {
     private bool _isComplete;
 
-    public SimpleGoal(bool isComplete, string shortName, string description, string points)
+    public SimpleGoal(bool isComplete, string shortName, string description, int points)
       : base(shortName, description, points)
     {
         _isComplete = isComplete;
@@ -29,6 +29,6 @@ public class SimpleGoal : Goal
   public override string GetStringRepresentation()
   {
     string checkbox = _isComplete ? "[X]" : "[ ]";
-    return $"{checkbox} {GetShortName()} ([_description])";
+    return $"{checkbox} {GetShortName()} ({GetDescription()})";
   }
 }

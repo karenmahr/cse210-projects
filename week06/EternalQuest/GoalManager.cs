@@ -8,23 +8,58 @@ public class GoalManager
     public GoalManager(int score)
     {
         _score = score;
-    } 
+    }
 
     public void Start()
     {
-        Console.WriteLine("Menu Options:");
-        Console.WriteLine("   1. Create New Goal");
-        Console.WriteLine("   2. List Goals");
-        Console.WriteLine("   3. Save Goals");
-        Console.WriteLine("   4. Load Goals");
-        Console.WriteLine("   5. Record Event");
-        Console.WriteLine("   6. Quit");
-        Console.Write("Select a choice from the menu:");
-        string userInput = Console.ReadLine();
-        int option = int.Parse(userInput);
-        Console.WriteLine();
-    }
+        bool running = true;
+        while (running)
+        {
 
+            Console.WriteLine("Menu Options:");
+            Console.WriteLine("   1. Create New Goal");
+            Console.WriteLine("   2. List Goals");
+            Console.WriteLine("   3. Save Goals");
+            Console.WriteLine("   4. Load Goals");
+            Console.WriteLine("   5. Record Event");
+            Console.WriteLine("   6. Quit");
+            Console.Write("Select a choice from the menu:");
+            string userInput = Console.ReadLine();
+            Console.WriteLine();
+
+            int option;
+            if (int.TryParse(userInput, out option))
+            {
+                Console.WriteLine();
+
+                switch (option)
+                {
+                    case 1:
+                        CreateGoal();
+                        break;
+                    case 2:
+                        ListGoalDetails();
+                        break;
+                    case 3:
+                        SaveGoals(); 
+                        break;
+                    case 4:
+                        LoadGoals(); 
+                        break;
+                    case 5:
+                        RecordEvent();
+                        break;
+                    case 6:
+                        Console.WriteLine("Exiting EternalQuest. Goodbye!");
+                        running = false;
+                        break;
+                    default:
+                        Console.WriteLine("Please select a valid option.");
+                        break;
+                }
+            }
+        }
+    }
     public void DisplayPlayerInfo()
     {
         Console.WriteLine($"You have {_score} points");
@@ -41,10 +76,10 @@ public class GoalManager
     {
         for (int i = 0; i < _goals.Count; i++)
         {
-            Console.WriteLine($"{i + 1}. {_goals[i].GetDetailString()}");
+            Console.WriteLine($"{i + 1}. {_goals[i].GetDetailsString()}");
         }
     }
-    public void CreateGoal(Goal newGoal)
+    public void CreateGoal()
     {
         Console.WriteLine("The type of Goals are:");
         Console.WriteLine("   1. Simple Goal");
@@ -69,12 +104,12 @@ public class GoalManager
         Goal newGoal = null;
         if (secondOption == 1)
         {
-            newGoal = new SimpleGoal(name, description, GetPoints());
+            newGoal = new SimpleGoal(false, name, description, goal);
         }
 
         else if (secondOption == 2)
         {
-            newGoal = new EternalGoal(name, description, GetPoints());
+            newGoal = new EternalGoal(name, description, goal);
         }
 
         else if (secondOption == 3)
@@ -89,7 +124,7 @@ public class GoalManager
             int bonus = int.Parse(fifthuserInput);
             Console.WriteLine();
 
-            newGoal = new CheckListGoal(name, description, GetPoints(), times, bonus);
+            newGoal = new CheckListGoal(name, description, goal, times, bonus);
         }
         if (newGoal != null)
         {
@@ -103,7 +138,7 @@ public class GoalManager
         Console.WriteLine("Which goal did you accomplish? ");
         string userInput = Console.ReadLine();
         int recordingEvent = int.Parse(userInput);
-        Console.WriteLine($"You have {points} points.");
+        Console.WriteLine($"You have {_score} points.");
     }
 
     public void SaveGoals()
